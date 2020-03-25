@@ -26,6 +26,7 @@ td{
 }
 
 .sidebar a{
+  box-sizing: border-box;
   display: block;
   text-decoration: none;
   background-image: linear-gradient(to bottom right, #00AFCA, white 25%);;

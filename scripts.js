@@ -1,6 +1,3 @@
-$('#navigation').load("menu.html");
-
-
 function togNav() {
   var bar = document.getElementById("mySidebar");
   if (bar.style.display == "none"){
