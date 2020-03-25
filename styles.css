@@ -1,21 +1,28 @@
+td{
+  padding: 5px;
+}
+
 .header{
   box-sizing: border-box;
   background-color: lightgreen;
   padding: 20px;
+  transition: 0.5s;
 }
 
 .main_content{
   box-sizing: border-box;
   background-color: lightblue;
   padding: 20px;
+  transition: 0.5s;
+
 }
 
 .sidebar{
     box-sizing: border-box;
     position: fixed;
-    width: 177px;
     height: 100%;
     padding: 20px;
+    width: 177px;
 }
 
 .sidebar a{
@@ -31,17 +38,20 @@
   cursor: pointer;
 }
 
-@media (max-width: 499px) {
-  .main_content{
-    margin: 20px;
-  }
-
+@media screen and (max-width: 799px) {
   .sidebar{
     display: none;
   }
+  #mySidebar{
+    display: none;
+  }
+
+  .openbtn{
+    display: block;
+  }
 }
 
-@media (min-width: 500px) {
+@media screen and (min-width: 800px) {
   .main_content{
     margin-left: 177px;
     width: 40%;
@@ -51,4 +61,14 @@
     width: 40%;
   }
 
+  .sidebar{
+    display: block;
+  }
+
+  #mySidebar{
+    display: block;
+  }
+  .openbtn{
+    display: none;
+  }
 }
