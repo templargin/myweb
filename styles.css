@@ -1,21 +1,41 @@
+.header{
+  box-sizing: border-box;
+  background-color: lightgreen;
+  padding: 20px;
+}
 
 .main_content{
+  box-sizing: border-box;
   background-color: lightblue;
+  padding: 20px;
 }
 
 .sidebar{
-    background-color: lightgrey;
+    box-sizing: border-box;
     position: fixed;
     width: 177px;
     height: 100%;
+    padding: 20px;
+}
+
+.sidebar a{
+  display: block;
+  text-decoration: none;
+  background-image: linear-gradient(to bottom right, #00AFCA, white 25%);;
+  color : #343434;
+  padding: 3px;
+}
+
+.openbtn{
+  font-size: 20px;
+  cursor: pointer;
 }
 
 @media (max-width: 499px) {
   .main_content{
-    padding: 20px;
     margin: 20px;
   }
-  
+
   .sidebar{
     display: none;
   }
@@ -23,10 +43,12 @@
 
 @media (min-width: 500px) {
   .main_content{
-    padding: 20px;
     margin-left: 177px;
     width: 40%;
   }
-  
+  .header{
+    margin-left: 177px;
+    width: 40%;
+  }
 
 }

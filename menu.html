@@ -9,16 +9,36 @@
   <body>
 
       <div class="sidebar">
-        <ul>
-          <li><a href="home.html">Home</a></li>
-          <li><a href="essays.html">Essays</a></li>
-          <li><a href="cs.html">Computer science</a></li>
-          <li><a href="investing.html">Investing</a></li>
-          <li><a href="books.html">Books</a></li>
-          <li><a href="quotes.html">Quotes</a></li>
-          <li><a href="failures.html">Failures</a></li>
-        </ul>
+          <a class="grad" href="home.html">Home</a>
+          <a href="essays.html">Essays</a>
+          <a href="cs.html">Computer science</a>
+          <a href="investing.html">Investing</a>
+          <a href="books.html">Books</a>
+          <a href="quotes.html">Quotes</a>
+          <a href="failures.html">Failures</a>
       </div>
+
+
+      <div class="header">
+        <div>
+          <span class="openbtn" onclick="openNav()">☰</button>
+        </div>
+        Header content here (probably image)
+      </div>
+      
+
+
+      <script>
+        function openNav() {
+          document.getElementById("sidebar").style.width = "200px";
+          document.getElementById("main_content").style.marginLeft = "200px";
+        }
+
+        function closeNav() {
+          document.getElementById("sidebar").style.width = "0";
+          document.getElementById("main_content").style.marginLeft= "0";
+        }
+      </script>
 
 
   </body>
