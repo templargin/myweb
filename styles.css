@@ -4,16 +4,14 @@ td{
 
 .header{
   box-sizing: border-box;
-  background-color: lightgreen;
-  padding: 20px;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 .main_content{
   box-sizing: border-box;
   background-color: lightblue;
   padding: 20px;
-  transition: 0.5s;
+  transition: 0.3s;
 
 }
 
@@ -21,7 +19,6 @@ td{
     box-sizing: border-box;
     position: fixed;
     height: 100%;
-    padding: 20px;
     width: 177px;
 }
 
