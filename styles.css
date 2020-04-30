@@ -19,7 +19,8 @@ td{
     box-sizing: border-box;
     position: fixed;
     height: 100%;
-    width: 177px;
+    padding-top: 10px;
+    width: 150px;
 }
 
 .sidebar a{
@@ -51,11 +52,11 @@ td{
 
 @media screen and (min-width: 800px) {
   .main_content{
-    margin-left: 177px;
+    margin-left: 150px;
     width: 40%;
   }
   .header{
-    margin-left: 177px;
+    margin-left: 150px;
     width: 40%;
   }
 
