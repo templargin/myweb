@@ -56,11 +56,11 @@ td{
 @media screen and (min-width: 800px) {
   .main_content{
     margin-left: 150px;
-    width: 40%;
+    width: 30%;
   }
   .header{
     margin-left: 150px;
-    width: 40%;
+    width: 30%;
   }
 
   .sidebar{
