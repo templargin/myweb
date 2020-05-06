@@ -11,6 +11,7 @@ td{
   box-sizing: border-box;
   padding-left: 28px;
   padding-bottom: 10px;
+  padding-right: 5px;
   transition: 0.3s;
 
 }
