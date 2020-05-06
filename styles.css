@@ -10,6 +10,7 @@ td{
 .main_content{
   box-sizing: border-box;
   padding-left: 28px;
+  padding-bottom: 10px;
   transition: 0.3s;
 
 }
