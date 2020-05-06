@@ -16,6 +16,10 @@ td{
 
 }
 
+.main_content li{
+  padding-bottom: 3px;
+}
+
 .sidebar{
     box-sizing: border-box;
     position: fixed;
