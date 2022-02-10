@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale:1.0">
+    <link rel="icon" type="image/png" href="fav.png">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>Software engineer</title>
+</head>
+<body>
+
+    <div id="navigation">
+        <script>
+        $('#navigation').load("menu.html");
+        </script>
+    </div>
+
+    <div id="myContent" class="main_content">
+       <p><em>Jan 20, 2022</em></p>
+<p>&nbsp;</p>
+<p><strong>Story [1]</strong></p>
+<p>&nbsp;</p>
+<p><em>Chapter one</em></p>
+<p>What is UC? Unified Communications is something that helps company employees to talk to each other. The service comes from private branch exchange (PBX) which is a private network within the company. I am in sales department sitting in my cubicle. I want to talk to John in engineering. I pick up my landline desk phone, dial 147 (internal phone for John) and his phone rings. That is PBX.</p>
+<p>&nbsp;</p>
+<p>Names like RingCentral or 8x8 come to mind when we think about UC offering.</p>
+<p>&nbsp;</p>
+<p>What is CC? Contact center is something that helps company employees to talk to outside customers. Whenever you hear &ldquo;dial one for X, dial two for Y&rdquo; you are dealing with contact center.</p>
+<p>&nbsp;</p>
+<p>Think of Five9 or Talkdesk.</p>
+<p>&nbsp;</p>
+<p><em>Chapter two</em></p>
+<p>What is UCaaS? Most of the times whenever you have &ldquo;aaS&rdquo; added it means that whatever equipment people had onsite to provide the service is no longer needed. All the equipment is now in a data center somewhere. You just pay monthly or annual subscription fee.</p>
+<p>&nbsp;</p>
+<p>Let&rsquo;s add &ldquo;aaS&rdquo;, get rid of the equipment and here we go, we are in the cloud.</p>
+<p>&nbsp;</p>
+<p>As a note here, CCaaS solution a lot more expensive than UCaaS. For example, $15/user/month vs. $120/user/month.</p>
+<p>&nbsp;</p>
+<p><em>Chapter three [2]</em></p>
+<p>Now we have everyone in the cloud. In the age of everything connected to everything companies started to want UC and CC offerings together. Big players started to come up with solutions to extend the offering to another side &ndash; CCaaS to UCaaS and vice versa.</p>
+<p>&nbsp;</p>
+<p>The only large player who offered both UC and CC solutions earlier on was 8x8.</p>
+<p>&nbsp;</p>
+<p><em>Chapter four [3]</em></p>
+<p>Teams happened. Teams took UCaaS industry by storm. Teams is everywhere.</p>
+<p>Microsoft said they don&rsquo;t want to get into contact center business. Connect whatever you want to Teams but first we need to certify you. All the large CCaaS players started integrating with Teams. Of course, everyone claims that their integration is as seamless as it can be.</p>
+<p>&nbsp;</p>
+<p>There are three models to use CCaaS with Teams: connect, extend or power [4,5].</p>
+<p>&nbsp;</p>
+<p>Connect. This is the weakest form of integration and almost everybody uses it now. Integrating company has to have their own Direct Routing and Microsoft Voice system is completely bypassed.</p>
+<p>&nbsp;</p>
+<p>Extend. The product in this method is integrated into Teams with Graph APIs, uses Teams as voice platform and uses Microsoft Bot Framework to connect and receive calls.&nbsp;</p>
+<p>&nbsp;</p>
+<p>Power. This is not available yet but will likely have some additional features over Extend model.</p>
+<p>&nbsp;</p>
+<p><strong>Main character in the story</strong></p>
+<p>&nbsp;</p>
+<p>How does Altigen fit into the chapters listed above? In most of the company&rsquo;s history the main offering was UC service (Chapter 1). Then Altigen decided to transition to cloud to pursue UCaaS business model (Chapter 2). To further grow revenues company lacked more expensive CC offering. To solve this problem partnership with FrontStage came along (Chapter 3). Finally, when Teams started to explode in the industry, we witnessed Blue Panda acquisition and birth of CoreInteract offering (Chapter 4).</p>
+<p>&nbsp;</p>
+<p><strong>Q&amp;A</strong></p>
+<p>&nbsp;</p>
+<p>What happened to ATGN?</p>
+<p>Share price plunged</p>
+<p>&nbsp;</p>
+<p>Why did it happen?</p>
+<p>Investors got tired of revenues not growing despite management&rsquo;s promises about &ldquo;the next quarter&rdquo;</p>
+<p>&nbsp;</p>
+<p>What is the management&rsquo;s explanation?</p>
+<p>Altigen products are unique and it took more time and effort to release new products than they initially expected</p>
+<p>&nbsp;</p>
+<p>Well, how unique are they?</p>
+<p>I went through all the listed Microsoft partners (20 companies) [6] and found their Contact Center product names. I then looked them up in Microsoft AppSource store and found out that most have &ldquo;WebApp&rdquo; badge and a few have &ldquo;Teams&rdquo; badge [7,8]. Those who have &ldquo;Teams&rdquo; badge use &ldquo;Extend&rdquo; model and Altigen CoreInteract (although it is not necessarily full CC solution, later on this) is one of them. If we take into consideration Teams badge, website offering and documentation there seems to be only one company besides Altigen that has more or less ready to go native solution &ndash; Landis Technologies [9].</p>
+<p>&nbsp;</p>
+<p>What is truly native solution?</p>
+<p>There are three requirements for the solution to be native: has to be in Teams and use it as a voice platform, has to use Microsoft Bot Framework, has to be deployed in Azure.</p>
+<p>&nbsp;</p>
+<p>Why is native solution attractive?</p>
+<p>Everything is in one place. It is inside of Teams, no additional dashboards are required. You don&rsquo;t even know you are using some other company&rsquo;s service because it feels that you are just using Teams. Works seamlessly.</p>
+<p>&nbsp;</p>
+<p>What about competition?</p>
+<p>I mean &ldquo;truly native solution&rdquo; providing competition. There seems to be only one more player offering native solutions (so far) &ndash; Landis Technologies. The market opportunity is too huge to worry about the competition for a small company like Altigen (my opinion). I even think it is beneficial to have a true peer in the field to see what they offer, how much they charge, etc. Landis does a great job of explaining their products to the market through YouTube videos [10].</p>
+<p>&nbsp;</p>
+<p>Why wouldn&rsquo;t the big guys offer native solution?</p>
+<p>They would need to give too much data to Microsoft which they obviously do not want to do. Big CC players are doing well now without having to worry about Teams.</p>
+<p>&nbsp;</p>
+<p>What if Microsoft decides to offer their own CC solution?</p>
+<p>They already launched Dynamics 365 Customer Service CCaaS [11]. This only applies to Dynamics 365 users which mostly are huge enterprises. This is not a threat to what Altigen is targeting.</p>
+<p>&nbsp;</p>
+<p><strong>Products</strong></p>
+<p>&nbsp;</p>
+<p>What is CoreInteract?</p>
+<p>CoreInteract is a native Teams application - customer engagement platform. It extends Microsoft phone system and supports channels like SMS, webchat and email. CoreInteract offers 80% of what typical Contact Center would offer for only fraction of a price. That is why it is so promising for SMEs. UC only is affordable but not enough. UC plus CC has everything but is too expensive. UC plus 80% of CC features is affordable and covers all the needs. Initially Altigen wanted to offer CoreInteract on a freemium model to acquire as many customers as possible and then upsell additional features. Interestingly enough market did not want this for free. Altigen&rsquo;s partners wanted to charge right away so they are paid immediately.</p>
+<p>&nbsp;</p>
+<p>What is CoreAttendant?</p>
+<p>It is a native Teams application that helps operators to handle incoming calls efficiently. CoreAttendant allows for more than one operator as opposed to Teams&rsquo; limitation to only one. It offers features like presence control, calendar integration, transfer to workgroups and frequent contacts. After doing some research I&rsquo;ve come to a conclusion that this feature is really in demand which was a surprise to me.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Latest and greatest solutions:</p>
+<ul>
+<li>UCaaS &ndash; MaxCloud</li>
+<li>UCaas + CCaaS &ndash; MaxCloud + FrontStage</li>
+<li>CoreInteract &ndash; customer engagement platform in Teams (UCaaS + &ldquo;0.8 CCaaS&rdquo;)</li>
+<li>CoreAttendant &ndash; application to handle incoming calls</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Revenue growth opportunities</strong></p>
+<p>&nbsp;</p>
+<p><em>Teams</em></p>
+<p>CoreInteract. This product is ready and is being actively sold through partners. Altigen charges $15-45/user/month.</p>
+<p>&nbsp;</p>
+<p>CoreAttendant. This product was scheduled for a preview in last week of December 2021. Earmarked price for it is $50/user/month.</p>
+<p>&nbsp;</p>
+<p>FrontStage. This is scheduled for release in calendar Q1 2022. Price - $50-125/user/month.</p>
+<p>&nbsp;</p>
+<p>There could be exceptions but by and large SMEs are targeted through Microsoft partners whereas large enterprises are targeted directly. I believe management&rsquo;s preference is to have many SMEs as customers rather than hunting for elephants. Obviously is elephant is hunted down nobody will complain.</p>
+<p>&nbsp;</p>
+<p><em>Fiserv</em></p>
+<p>Below is the list of possible opportunities to increase revenues through Fiserv partnership</p>
+<ul>
+<li>From legacy to MaxCloud</li>
+<li>From MaxCS PBX to MaxCloud</li>
+<li>MaxCloud + FrontStage</li>
+<li>Voice verification</li>
+</ul>
+<p>&nbsp;</p>
+<p>I think Fiserv&rsquo;s data center migration program coincided with Altigen&rsquo;s delay of new products which resulted in absolute silence on this front. There was no talk about Fiserv on the latest conference call. There is very little transparency into what exactly is happening between Altigen and Fiserv. We can only claim a few things for sure. Fiserv has a lot of customers and it is in their best interest to sell Altigen&rsquo;s products to those customers. The opportunity remains huge.</p>
+<p>&nbsp;</p>
+<p><em>Traditional resellers</em></p>
+<p>This is very similar to Fiserv. I do not anticipate a huge influx of revenue from this channel.</p>
+<p>&nbsp;</p>
+<p><em>Acquisitions</em></p>
+<p>It is very difficult to make predictions on any acquisition deal. There are two things to look out for: price paid and execution afterwards. I think acquisition was supposed to be financed through some kind of equity plus cash deal. With recent share price drop I hope the deal will be skewed more towards cash. As far as execution goes - we will have to wait and see.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Conclusion</strong></p>
+<p>I trust management is doing its best to come through with the promises they made. I don&rsquo;t think significant revenues that will change investors&rsquo; sentiment will start flowing in within the next few quarters. Lack of the revenue increase in the next quarter results could even cause more selloff. I expect the increase towards the end of 2022.</p>
+<p>&nbsp;</p>
+<p>I haven&rsquo;t sold any shares but I haven&rsquo;t bought any either. At this point I will wait and observe. As much as I like the company and the management, I need to see the execution now. The share price is so beaten down that even if it jumps 50% because we can start seeing in the numbers that MaxCloud with Frontstage, CoreInteract and CoreAttendant got meaningful traction, the company will still be very cheap.</p>
+<p>&nbsp;</p>
+<p>Here is the scenario we want: significant revenue increase with revenue breakdown by products, low churn, one or two accretive acquisitions and uplisting. This could be wishful thinking but it is not an improbable scenario within a couple of years. I am sure the price tag at the end of it would be very different from what it is right now.</p>
+<p>&nbsp;</p>
+    </div>
+
+</body>
+</html>
