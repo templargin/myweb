@@ -46,7 +46,7 @@ td{
   color: #a437bd;
 }
 
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 834px) {
   .sidebar{
     display: none;
   }
@@ -59,7 +59,7 @@ td{
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 835px) {
   .main_content{
     margin-left: 150px;
     width: 35%;
