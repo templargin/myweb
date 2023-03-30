@@ -10,10 +10,9 @@ td{
 .main_content{
   box-sizing: border-box;
   padding-left: 28px;
-  padding-bottom: 10px;
-  padding-right: 5px;
+  padding-right: 28px;
+  padding-bottom: 15px;
   transition: 0.3s;
-
 }
 
 .main_content li{
