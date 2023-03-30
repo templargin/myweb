@@ -13,7 +13,6 @@ td{
   padding-right: 28px;
   padding-bottom: 15px;
   transition: 0.3s;
-  text-align: justify;
 }
 
 .main_content li{
@@ -47,9 +46,14 @@ td{
 }
 
 @media screen and (max-width: 834px) {
+  .main_content{
+    text-align: justify;
+  } 
+  
   .sidebar{
     display: none;
   }
+  
   #mySidebar{
     display: none;
   }
