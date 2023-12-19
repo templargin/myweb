@@ -14,12 +14,18 @@
 
     #left {
       flex: 1;
-      background-color: blue;
+      background-color: lightblue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     #right {
       flex: 1;
-      background-color: pink;
+      background-color: lightblue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     #overlay {
@@ -30,8 +36,29 @@
       transform: translate(-50%, -50%);
       padding: 20px;
       background-color: white;
-      border: 1px solid black;
+      border: 1px solid #ccc;
+      border-radius: 8px;
       text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #overlay p {
+      margin: 0 0 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: lightblue;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #9ac2ff;
     }
   </style>
 </head>
@@ -57,8 +84,8 @@
 
       // Change background color based on the selected gender
       if (gender === 'boy') {
-        document.getElementById('left').style.backgroundColor = 'blue';
-        document.getElementById('right').style.backgroundColor = 'blue';
+        document.getElementById('left').style.backgroundColor = 'lightblue';
+        document.getElementById('right').style.backgroundColor = 'lightblue';
       } else if (gender === 'girl') {
         document.getElementById('left').style.backgroundColor = 'pink';
         document.getElementById('right').style.backgroundColor = 'pink';
