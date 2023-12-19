@@ -4,17 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gender Reveal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       overflow: hidden;
       display: flex;
       height: 100vh;
+      font-family: 'Roboto', sans-serif;
     }
 
     #left {
       flex: 1;
-      background-color: lightblue;
+      background-color: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -22,14 +24,17 @@
 
     #right {
       flex: 1;
-      background-color: lightblue;
+      background-color: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     #overlay {
-      display: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       position: fixed;
       top: 50%;
       left: 50%;
@@ -49,16 +54,25 @@
     button {
       padding: 10px 20px;
       font-size: 16px;
-      background-color: lightblue;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       outline: none;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button#boy {
+      background-color: #87CEEB; /* SkyBlue */
+      color: #fff;
+    }
+
+    button#girl {
+      background-color: #FFC0CB; /* Pink */
+      color: #fff;
     }
 
     button:hover {
-      background-color: #9ac2ff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
   </style>
 </head>
@@ -67,29 +81,30 @@
   <div id="right"></div>
 
   <div id="overlay">
-    <p>Is it a girl or a boy?</p>
-    <button onclick="reveal('boy')">Boy</button>
-    <button onclick="reveal('girl')">Girl</button>
+    <p style="font-size: 20px;">Is it a girl or a boy?</p>
+    <button id="boy" onclick="reveal('boy')">Boy</button>
+    <button id="girl" onclick="reveal('girl')">Girl</button>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Show the overlay when the page is loaded
-      document.getElementById('overlay').style.display = 'block';
+      // Do not color the background initially
+      document.getElementById('left').style.backgroundColor = 'transparent';
+      document.getElementById('right').style.backgroundColor = 'transparent';
     });
 
     function reveal(gender) {
-      // Hide the overlay
-      document.getElementById('overlay').style.display = 'none';
-
       // Change background color based on the selected gender
       if (gender === 'boy') {
-        document.getElementById('left').style.backgroundColor = 'lightblue';
-        document.getElementById('right').style.backgroundColor = 'lightblue';
+        document.getElementById('left').style.backgroundColor = '#87CEEB'; /* SkyBlue */
+        document.getElementById('right').style.backgroundColor = '#87CEEB'; /* SkyBlue */
       } else if (gender === 'girl') {
-        document.getElementById('left').style.backgroundColor = 'pink';
-        document.getElementById('right').style.backgroundColor = 'pink';
+        document.getElementById('left').style.backgroundColor = '#FFC0CB'; /* Pink */
+        document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Pink */
       }
+
+      // Hide the overlay
+      document.getElementById('overlay').style.display = 'none';
     }
   </script>
 </body>
