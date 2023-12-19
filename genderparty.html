@@ -96,7 +96,7 @@
       transform: translateX(-50%);
       background-color: #fff;
       border: 1px solid #ccc;
-      padding: 10px 20px;
+      padding: 8px 16px;
       border-radius: 4px;
       cursor: pointer;
       transition: background-color 0.3s ease;
@@ -119,7 +119,7 @@
 
   <div id="celebration"></div>
 
-  <button id="resetButton" onclick="reset()">Reset</button>
+  <button id="resetButton" onclick="reset()"></button>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -140,7 +140,8 @@
         showCelebration('girl');
       }
 
-      // Show the reset button
+      // Hide the overlay and show the reset button
+      document.getElementById('overlay').style.display = 'none';
       document.getElementById('resetButton').style.display = 'block';
     }
 
@@ -156,10 +157,8 @@
       document.getElementById('left').style.backgroundColor = 'transparent';
       document.getElementById('right').style.backgroundColor = 'transparent';
 
-      // Show the overlay
+      // Show the overlay and hide the celebratory text and reset button
       document.getElementById('overlay').style.display = 'flex';
-
-      // Hide the celebratory text and reset button
       document.getElementById('celebration').style.display = 'none';
       document.getElementById('resetButton').style.display = 'none';
     }
