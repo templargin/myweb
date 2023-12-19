@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gender Reveal</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      height: 100vh;
+    }
+
+    #left {
+      flex: 1;
+      background-color: blue;
+    }
+
+    #right {
+      flex: 1;
+      background-color: pink;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: white;
+      border: 1px solid black;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="left"></div>
+  <div id="right"></div>
+
+  <div id="overlay">
+    <p>Is it a girl or a boy?</p>
+    <button onclick="reveal('boy')">Boy</button>
+    <button onclick="reveal('girl')">Girl</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Show the overlay when the page is loaded
+      document.getElementById('overlay').style.display = 'block';
+    });
+
+    function reveal(gender) {
+      // Hide the overlay
+      document.getElementById('overlay').style.display = 'none';
+
+      // Change background color based on the selected gender
+      if (gender === 'boy') {
+        document.getElementById('left').style.backgroundColor = 'blue';
+        document.getElementById('right').style.backgroundColor = 'blue';
+      } else if (gender === 'girl') {
+        document.getElementById('left').style.backgroundColor = 'pink';
+        document.getElementById('right').style.backgroundColor = 'pink';
+      }
+    }
+  </script>
+</body>
+</html>
