@@ -16,7 +16,7 @@
 
     #left {
       flex: 1;
-      background-color: transparent;
+      background-color: #87CEEB; /* Light Blue */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -24,7 +24,7 @@
 
     #right {
       flex: 1;
-      background-color: transparent;
+      background-color: #FFC0CB; /* Light Pink */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -52,6 +52,7 @@
     }
 
     button {
+      margin-top: 10px;
       padding: 10px 20px;
       font-size: 16px;
       border: none;
@@ -89,18 +90,18 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // Do not color the background initially
-      document.getElementById('left').style.backgroundColor = 'transparent';
-      document.getElementById('right').style.backgroundColor = 'transparent';
+      document.getElementById('left').style.backgroundColor = '#87CEEB'; /* Light Blue */
+      document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Light Pink */
     });
 
     function reveal(gender) {
       // Change background color based on the selected gender
       if (gender === 'boy') {
-        document.getElementById('left').style.backgroundColor = '#87CEEB'; /* SkyBlue */
-        document.getElementById('right').style.backgroundColor = '#87CEEB'; /* SkyBlue */
+        document.getElementById('left').style.backgroundColor = '#87CEEB'; /* Light Blue */
+        document.getElementById('right').style.backgroundColor = '#87CEEB'; /* Light Blue */
       } else if (gender === 'girl') {
-        document.getElementById('left').style.backgroundColor = '#FFC0CB'; /* Pink */
-        document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Pink */
+        document.getElementById('left').style.backgroundColor = '#FFC0CB'; /* Light Pink */
+        document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Light Pink */
       }
 
       // Hide the overlay
