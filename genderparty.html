@@ -75,6 +75,36 @@
     button:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
+
+    #celebration {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 36px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    #resetButton {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #resetButton:hover {
+      background-color: #f5f5f5;
+    }
   </style>
 </head>
 <body>
@@ -87,11 +117,15 @@
     <button id="girl" onclick="reveal('girl')">Girl</button>
   </div>
 
+  <div id="celebration"></div>
+
+  <button id="resetButton" onclick="reset()">Reset</button>
+
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // Do not color the background initially
-      document.getElementById('left').style.backgroundColor = '#87CEEB'; /* Light Blue */
-      document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Light Pink */
+      document.getElementById('left').style.backgroundColor = 'transparent';
+      document.getElementById('right').style.backgroundColor = 'transparent';
     });
 
     function reveal(gender) {
@@ -99,13 +133,35 @@
       if (gender === 'boy') {
         document.getElementById('left').style.backgroundColor = '#87CEEB'; /* Light Blue */
         document.getElementById('right').style.backgroundColor = '#87CEEB'; /* Light Blue */
+        showCelebration('boy');
       } else if (gender === 'girl') {
         document.getElementById('left').style.backgroundColor = '#FFC0CB'; /* Light Pink */
         document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Light Pink */
+        showCelebration('girl');
       }
 
-      // Hide the overlay
-      document.getElementById('overlay').style.display = 'none';
+      // Show the reset button
+      document.getElementById('resetButton').style.display = 'block';
+    }
+
+    function showCelebration(gender) {
+      // Display celebratory text
+      document.getElementById('celebration').innerText = `Congratulations! It's a ${gender.charAt(0).toUpperCase() + gender.slice(1)}!`;
+      document.getElementById('celebration').style.backgroundColor = gender === 'boy' ? '#87CEEB' : '#FFC0CB';
+      document.getElementById('celebration').style.display = 'block';
+    }
+
+    function reset() {
+      // Reset the background colors
+      document.getElementById('left').style.backgroundColor = 'transparent';
+      document.getElementById('right').style.backgroundColor = 'transparent';
+
+      // Show the overlay
+      document.getElementById('overlay').style.display = 'flex';
+
+      // Hide the celebratory text and reset button
+      document.getElementById('celebration').style.display = 'none';
+      document.getElementById('resetButton').style.display = 'none';
     }
   </script>
 </body>
