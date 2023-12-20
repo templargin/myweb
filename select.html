@@ -53,56 +53,30 @@
   </form>
 
   <script>
-      function updateGender() {
+     function updateGender() {
         const selectedGender = document.getElementById('gender').value;
-      
-        // Prepare the updated data
-        const updatedData = { gender: selectedGender };
         const filePath = 'contents/gender.json'; // Adjust the path as needed
       
-        // Use the GitHub API to check if the file exists
-        fetch(`https://api.github.com/repos/templargin/myweb/contents/${filePath}`)
-          .then(response => {
-            if (response.ok) {
-              // File exists, use the "Update a file" operation
-              return response.json();
-            } else if (response.status === 404) {
-              // File doesn't exist, use the "Create a file" operation
-              return Promise.reject({ status: 404 });
-            } else {
-              return Promise.reject(response.statusText);
-            }
-          })
-          .then(existingData => {
-            // File exists, perform the "Update a file" operation here
-            // You can use the existingData.content to get the existing file content
-            console.log('File exists:', existingData);
-          })
-          .catch(error => {
-            if (error.status === 404) {
-              // File doesn't exist, proceed with the "Create a file" operation
-              createGenderFile(updatedData, filePath);
-            } else {
-              console.error('Error checking file existence:', error);
-            }
-          });
-      }
-      
-      function createGenderFile(data, filePath) {
         // Use the GitHub API to create the file
         fetch(`https://api.github.com/repos/templargin/myweb/contents/${filePath}`, {
           method: 'PUT',
           headers: {
-            Authorization: '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', // Replace with your actual token
+            Authorization: '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', // Replace with your actual token
             Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             message: 'Create gender information',
-            content: btoa(JSON.stringify(data, null, 2)),
+            content: btoa(JSON.stringify({ gender: selectedGender }, null, 2)),
           }),
         })
-          .then(response => response.json())
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              return Promise.reject(response.statusText);
+            }
+          })
           .then(createdData => {
             console.log('File created successfully:', createdData);
           })
@@ -110,6 +84,7 @@
             console.error('Error creating file:', error);
           });
       }
+
 
   </script>
 </body>
