@@ -43,41 +43,32 @@
   <h2>Gender Updater</h2>
   <form id="genderForm">
     <label for="gender">Select gender:</label>
-    <select id="gender" name="gender">
-      <option value="boy">Boy</option>
-      <option value="girl">Girl</option>
-      <option value="unknown">Unknown</option>
-    </select>
+    <select id="gender" name="gender"></select>
     <br>
     <button type="button" onclick="updateGender()">Update Gender</button>
   </form>
 
   <script>
+    // Fetch the current content of the gender.json file
+    fetch('https://raw.githubusercontent.com/templargin/myweb/master/gender.json')
+      .then(response => response.json())
+      .then(data => {
+        // Populate the dropdown with the current gender value
+        const genderDropdown = document.getElementById('gender');
+        const currentGender = data.gender || 'unknown'; // Set default value if not present
+        genderDropdown.innerHTML = `<option value="${currentGender}">${currentGender}</option>`;
+      })
+      .catch(error => {
+        console.error('Error fetching gender information:', error);
+      });
+
     function updateGender() {
       const selectedGender = document.getElementById('gender').value;
-      const rawFileUrl = 'https://raw.githubusercontent.com/templargin/myweb/master/gender.json';
 
-      // Fetch the raw content of the file
-      fetch(rawFileUrl)
-        .then(response => response.json()) // Assuming it's a JSON file
-        .then(data => {
-          // Update the JSON data
-          data.gender = selectedGender;
+      // Prepare the updated data
+      const updatedData = { gender: selectedGender };
 
-          // Convert the updated data back to JSON string
-          const updatedContent = JSON.stringify(data, null, 2);
-
-          // Save the updated data back to GitHub
-          saveUpdatedData(updatedContent, rawFileUrl);
-        })
-        .catch(error => {
-          console.error('Error fetching gender information:', error);
-          // Handle the error or provide a fallback behavior here
-        });
-    }
-
-    function saveUpdatedData(updatedContent, rawFileUrl) {
-      // Use the GitHub API to create a new commit with the updated content
+      // Use the GitHub API to update the content of the gender.json file
       fetch('https://api.github.com/repos/templargin/myweb/contents/gender.json', {
         method: 'PUT',
         headers: {
@@ -87,8 +78,7 @@
         },
         body: JSON.stringify({
           message: 'Update gender information',
-          content: btoa(updatedContent),
-          sha: null, // Set to null to create a new file if it doesn't exist
+          content: btoa(JSON.stringify(updatedData, null, 2)),
         }),
       })
         .then(response => response.json())
@@ -97,7 +87,6 @@
         })
         .catch(error => {
           console.error('Error updating gender information:', error);
-          // Handle the error or provide a fallback behavior here
         });
     }
   </script>
