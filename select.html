@@ -97,6 +97,7 @@
         body: JSON.stringify({
           message: 'Update gender information',
           content: btoa(JSON.stringify(updatedData, null, 2)),
+          sha: data.sha, // Include the sha of the existing file
         }),
       })
         .then(response => response.json())
