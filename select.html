@@ -53,10 +53,20 @@
     fetch('https://raw.githubusercontent.com/templargin/myweb/master/gender.json')
       .then(response => response.json())
       .then(data => {
-        // Populate the dropdown with the current gender value
+        // Populate the dropdown with the current gender value and additional options
         const genderDropdown = document.getElementById('gender');
         const currentGender = data.gender || 'unknown'; // Set default value if not present
-        genderDropdown.innerHTML = `<option value="${currentGender}">${currentGender}</option>`;
+        const genderOptions = ['boy', 'girl', 'unknown'];
+        
+        genderOptions.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.value = option;
+          optionElement.textContent = option.charAt(0).toUpperCase() + option.slice(1); // Capitalize first letter
+          genderDropdown.appendChild(optionElement);
+        });
+
+        // Set the selected option to the current gender value
+        genderDropdown.value = currentGender;
       })
       .catch(error => {
         console.error('Error fetching gender information:', error);
@@ -72,7 +82,7 @@
       fetch('https://api.github.com/repos/templargin/myweb/contents/gender.json', {
         method: 'PUT',
         headers: {
-          Authorization: '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',
+          Authorization: 'Bearer YOUR_GITHUB_PERSONAL_ACCESS_TOKEN',
           Accept: 'application/vnd.github.v3+json',
           'Content-Type': 'application/json',
         },
