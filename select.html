@@ -55,21 +55,50 @@
   <script>
     function updateGender() {
       const selectedGender = document.getElementById('gender').value;
+      const rawFileUrl = 'https://raw.githubusercontent.com/templargin/myweb/master/gender.json';
+      const apiUrl = 'https://api.github.com/repos/templargin/myweb/contents/gender.json';
 
-      // Replace this URL with your hosted JSON file URL
-      const jsonUrl = 'https://raw.githubusercontent.com/templargin/myweb/master/gender.json';
-
-      // Update the JSON file with the selected gender
-      fetch(jsonUrl, {
-        method: 'PUT',
+      fetch(apiUrl, {
+        method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
+          Authorization: 'Bearer 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', // Replace with your GitHub personal access token
+          Accept: 'application/vnd.github.v3+json',
         },
-        body: JSON.stringify({ gender: selectedGender }),
       })
         .then(response => response.json())
         .then(data => {
-          console.log('Gender updated successfully:', data);
+          // Update the JSON data
+          const updatedData = {
+            ...data,
+            content: btoa(JSON.stringify({ gender: selectedGender })),
+          };
+
+          // Save the updated data back to GitHub
+          saveUpdatedData(updatedData, apiUrl);
+        })
+        .catch(error => {
+          console.error('Error fetching gender information:', error);
+          // Handle the error or provide a fallback behavior here
+        });
+    }
+
+    function saveUpdatedData(data, apiUrl) {
+      fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          Authorization: 'Bearer ', // Replace with your GitHub personal access token
+          Accept: 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: 'Update gender information',
+          content: data.content,
+          sha: data.sha,
+        }),
+      })
+        .then(response => response.json())
+        .then(updatedData => {
+          console.log('Gender updated successfully:', updatedData);
         })
         .catch(error => {
           console.error('Error updating gender information:', error);
