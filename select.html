@@ -55,7 +55,7 @@
   <script>
      function updateGender() {
         const selectedGender = document.getElementById('gender').value;
-        const filePath = 'contents/gender.json'; // Adjust the path as needed
+        const filePath = 'gender.json'; // Adjust the path as needed
       
         // Use the GitHub API to create the file
         fetch(`https://api.github.com/repos/templargin/myweb/contents/${filePath}`, {
