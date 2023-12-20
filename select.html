@@ -49,12 +49,13 @@
   </form>
 
   <script>
-    // Fetch the current content of the gender.json file
-    fetch('https://raw.githubusercontent.com/templargin/myweb/master/gender.json')
-      .then(response => response.text()) // Change to text() instead of json()
+    // Fetch the current content of the gender.json file using GitHub API
+    fetch('https://api.github.com/repos/templargin/myweb/contents/gender.json')
+      .then(response => response.json())
       .then(data => {
-        // Parse the JSON content manually
-        const parsedData = JSON.parse(data);
+        // Parse the content of the file
+        const decodedContent = atob(data.content);
+        const parsedData = JSON.parse(decodedContent);
 
         // Populate the dropdown with the current gender value and additional options
         const genderDropdown = document.getElementById('gender');
@@ -85,23 +86,16 @@
       fetch('https://api.github.com/repos/templargin/myweb/contents/gender.json', {
         method: 'PUT',
         headers: {
-          Authorization: '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', 
+          Authorization: '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', // Replace with your actual token
           Accept: 'application/vnd.github.v3+json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           message: 'Update gender information',
           content: btoa(JSON.stringify(updatedData, null, 2)),
-          committer: {
-            name: 'adil',
-            email: 'templargin@gmail.com',
-          },
         }),
       })
-        .then(response => {
-          console.log('GitHub API Response:', response);
-          return response.json();
-        })
+        .then(response => response.json())
         .then(updatedData => {
           console.log('Gender updated successfully:', updatedData);
         })
