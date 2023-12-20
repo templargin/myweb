@@ -56,25 +56,19 @@
     function updateGender() {
       const selectedGender = document.getElementById('gender').value;
       const rawFileUrl = 'https://raw.githubusercontent.com/templargin/myweb/master/gender.json';
-      const apiUrl = 'https://api.github.com/repos/templargin/myweb/contents/gender.json';
 
-      fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-          Authorization: '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', // Replace with your GitHub personal access token
-          Accept: 'application/vnd.github.v3+json',
-        },
-      })
-        .then(response => response.json())
+      // Fetch the raw content of the file
+      fetch(rawFileUrl)
+        .then(response => response.json()) // Assuming it's a JSON file
         .then(data => {
           // Update the JSON data
-          const updatedData = {
-            ...data,
-            content: btoa(JSON.stringify({ gender: selectedGender })),
-          };
+          data.gender = selectedGender;
+
+          // Convert the updated data back to JSON string
+          const updatedContent = JSON.stringify(data, null, 2);
 
           // Save the updated data back to GitHub
-          saveUpdatedData(updatedData, apiUrl);
+          saveUpdatedData(updatedContent, rawFileUrl);
         })
         .catch(error => {
           console.error('Error fetching gender information:', error);
@@ -82,18 +76,19 @@
         });
     }
 
-    function saveUpdatedData(data, apiUrl) {
-      fetch(apiUrl, {
+    function saveUpdatedData(updatedContent, rawFileUrl) {
+      // Use the GitHub API to create a new commit with the updated content
+      fetch('https://api.github.com/repos/templargin/myweb/contents/gender.json', {
         method: 'PUT',
         headers: {
-          Authorization: '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', // Replace with your GitHub personal access token
+          Authorization: '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',
           Accept: 'application/vnd.github.v3+json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           message: 'Update gender information',
-          content: data.content,
-          sha: data.sha,
+          content: btoa(updatedContent),
+          sha: null, // Set to null to create a new file if it doesn't exist
         }),
       })
         .then(response => response.json())
