@@ -104,6 +104,10 @@
           message: 'Update gender information',
           content: btoa(JSON.stringify(updatedData, null, 2)),
           sha: window.fileData.sha, // Use the sha value from the stored response data
+          committer: {
+            name: 'templargin', // Replace with your GitHub username
+            email: 'templargin@gmail.com', // Replace with your GitHub email
+          },
         }),
       })
         .then(response => response.json())
