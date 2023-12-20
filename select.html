@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gender Updater</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    label {
+      font-size: 18px;
+    }
+
+    select {
+      font-size: 16px;
+      padding: 8px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      background-color: #E0B0FF; /* Lavender */
+      color: #fff;
+    }
+
+    button:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <h2>Gender Updater</h2>
+  <form id="genderForm">
+    <label for="gender">Select gender:</label>
+    <select id="gender" name="gender">
+      <option value="boy">Boy</option>
+      <option value="girl">Girl</option>
+      <option value="unknown">Unknown</option>
+    </select>
+    <br>
+    <button type="button" onclick="updateGender()">Update Gender</button>
+  </form>
+
+  <script>
+    function updateGender() {
+      const selectedGender = document.getElementById('gender').value;
+
+      // Replace this URL with your hosted JSON file URL
+      const jsonUrl = 'https://raw.githubusercontent.com/templargin/myweb/master/gender.json';
+
+      // Update the JSON file with the selected gender
+      fetch(jsonUrl, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ gender: selectedGender }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Gender updated successfully:', data);
+        })
+        .catch(error => {
+          console.error('Error updating gender information:', error);
+          // Handle the error or provide a fallback behavior here
+        });
+    }
+  </script>
+</body>
+</html>
