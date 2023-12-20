@@ -62,13 +62,8 @@
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    button#boy {
-      background-color: #87CEEB; /* SkyBlue */
-      color: #fff;
-    }
-
-    button#girl {
-      background-color: #FFC0CB; /* Pink */
+    button#reveal {
+      background-color: #4CAF50; /* Green */
       color: #fff;
     }
 
@@ -87,24 +82,6 @@
       color: #fff;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
-
-    #resetButton {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 8px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    #resetButton:hover {
-      background-color: #f5f5f5;
-    }
   </style>
 </head>
 <body>
@@ -112,14 +89,11 @@
   <div id="right"></div>
 
   <div id="overlay">
-    <p style="font-size: 20px;">Is it a girl or a boy?</p>
-    <button id="boy" onclick="reveal('boy')">Boy</button>
-    <button id="girl" onclick="reveal('girl')">Girl</button>
+    <p style="font-size: 20px;">Click "Reveal" to find out the gender!</p>
+    <button id="reveal" onclick="reveal()">Reveal</button>
   </div>
 
   <div id="celebration"></div>
-
-  <button id="resetButton" onclick="reset()"></button>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -128,21 +102,34 @@
       document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Light Pink */
     });
 
-    function reveal(gender) {
-      // Change background color based on the selected gender
-      if (gender === 'boy') {
-        document.getElementById('left').style.backgroundColor = '#87CEEB'; /* Light Blue */
-        document.getElementById('right').style.backgroundColor = '#87CEEB'; /* Light Blue */
-        showCelebration('boy');
-      } else if (gender === 'girl') {
-        document.getElementById('left').style.backgroundColor = '#FFC0CB'; /* Light Pink */
-        document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Light Pink */
-        showCelebration('girl');
-      }
+    function reveal() {
+      // Replace this URL with your hosted JSON file URL
+      const jsonUrl = 'https://raw.githubusercontent.com/templargin/myweb/master/gender.json';
 
-      // Hide the overlay and show the reset button
-      document.getElementById('overlay').style.display = 'none';
-      document.getElementById('resetButton').style.display = 'block';
+      fetch(jsonUrl)
+        .then(response => response.json())
+        .then(data => {
+          const gender = data.gender.toLowerCase();
+          // Rest of the reveal function remains the same...
+
+          // Change background color based on the revealed gender
+          if (gender === 'boy') {
+            document.getElementById('left').style.backgroundColor = '#87CEEB'; /* Light Blue */
+            document.getElementById('right').style.backgroundColor = '#87CEEB'; /* Light Blue */
+            showCelebration('boy');
+          } else if (gender === 'girl') {
+            document.getElementById('left').style.backgroundColor = '#FFC0CB'; /* Light Pink */
+            document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Light Pink */
+            showCelebration('girl');
+          }
+
+          // Hide the overlay
+          document.getElementById('overlay').style.display = 'none';
+        })
+        .catch(error => {
+          console.error('Error fetching gender information:', error);
+          // Handle the error or provide a fallback behavior here
+        });
     }
 
     function showCelebration(gender) {
@@ -150,17 +137,6 @@
       document.getElementById('celebration').innerText = `Congratulations! It's a ${gender.charAt(0).toUpperCase() + gender.slice(1)}!`;
       document.getElementById('celebration').style.backgroundColor = gender === 'boy' ? '#87CEEB' : '#FFC0CB';
       document.getElementById('celebration').style.display = 'block';
-    }
-
-    function reset() {
-      // Reset the background colors
-      document.getElementById('left').style.backgroundColor = '#87CEEB'; /* Light Blue */
-      document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Light Pink */
-
-      // Show the overlay and hide the celebratory text and reset button
-      document.getElementById('overlay').style.display = 'flex';
-      document.getElementById('celebration').style.display = 'none';
-      document.getElementById('resetButton').style.display = 'none';
     }
   </script>
 </body>
