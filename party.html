@@ -1,143 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gender Reveal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      display: flex;
-      height: 100vh;
-      font-family: 'Roboto', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender Reveal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+        }
 
-    #left {
-      flex: 1;
-      background-color: #87CEEB; /* Light Blue */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        #left {
+            flex: 1;
+            background-color: #87CEEB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    #right {
-      flex: 1;
-      background-color: #FFC0CB; /* Light Pink */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        #right {
+            flex: 1;
+            background-color: #FFC0CB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    #overlay {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 20px;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+        #overlay {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-    #overlay p {
-      margin: 0 0 15px;
-    }
+        #overlay p {
+            margin: 0 0 15px;
+        }
 
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      outline: none;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    button#reveal {
-      background-color: #E0B0FF;
-      color: #fff;
-    }
+        button#reveal {
+            background-color: #E0B0FF;
+            color: #fff;
+        }
 
-    button:hover {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
+        button:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
 
-    #celebration {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 36px;
-      font-weight: bold;
-      color: #fff;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-  </style>
+        #celebration {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #unknown-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #unknown-popup p {
+            margin: 0 0 15px;
+        }
+
+        #unknown-popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #unknown-popup button:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
+
 <body>
-  <div id="left"></div>
-  <div id="right"></div>
+    <div id="left"></div>
+    <div id="right"></div>
 
-  <div id="overlay">
-    <p style="font-size: 20px;">Click "Reveal" to find out the gender!</p>
-    <button id="reveal" onclick="reveal()">Reveal</button>
-  </div>
+    <div id="overlay">
+        <p style="font-size: 20px;">Click "Reveal" to find out the gender!</p>
+        <button id="reveal" onclick="reveal()">Reveal</button>
+    </div>
 
-  <div id="celebration"></div>
+    <div id="celebration"></div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Do not color the background initially
-      document.getElementById('left').style.backgroundColor = '#87CEEB'; /* Light Blue */
-      document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Light Pink */
-    });
+    <div id="unknown-popup">
+        <p style="font-size: 20px;">The gender is still unknown.</p>
+        <button onclick="closeUnknownPopup()">Close</button>
+    </div>
 
-    function reveal() {
-      // Replace this URL with your hosted JSON file URL
-      const jsonUrl = 'https://raw.githubusercontent.com/templargin/myweb/master/gender.json';
-
-      fetch(jsonUrl)
-        .then(response => response.json())
-        .then(data => {
-          const gender = data.gender.toLowerCase();
-          // Rest of the reveal function remains the same...
-
-          // Change background color based on the revealed gender
-          if (gender === 'boy') {
-            document.getElementById('left').style.backgroundColor = '#87CEEB'; /* Light Blue */
-            document.getElementById('right').style.backgroundColor = '#87CEEB'; /* Light Blue */
-            showCelebration('boy');
-          } else if (gender === 'girl') {
-            document.getElementById('left').style.backgroundColor = '#FFC0CB'; /* Light Pink */
-            document.getElementById('right').style.backgroundColor = '#FFC0CB'; /* Light Pink */
-            showCelebration('girl');
-          }
-
-          // Hide the overlay
-          document.getElementById('overlay').style.display = 'none';
-        })
-        .catch(error => {
-          console.error('Error fetching gender information:', error);
-          // Handle the error or provide a fallback behavior here
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Do not color the background initially
+            document.getElementById('left').style.backgroundColor = '#87CEEB';
+            document.getElementById('right').style.backgroundColor = '#FFC0CB';
         });
-    }
 
-    function showCelebration(gender) {
-      // Display celebratory text
-      document.getElementById('celebration').innerText = `Congratulations! It's a ${gender.charAt(0).toUpperCase() + gender.slice(1)}!`;
-      document.getElementById('celebration').style.backgroundColor = gender === 'boy' ? '#87CEEB' : '#FFC0CB';
-      document.getElementById('celebration').style.display = 'block';
-    }
-  </script>
+        function reveal() {
+            const jsonUrl = 'https://raw.githubusercontent.com/templargin/myweb/master/gender.json';
+
+            fetch(jsonUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const gender = data.gender.toLowerCase();
+
+                    if (gender === 'unknown') {
+                        // Display unknown popup
+                        document.getElementById('unknown-popup').style.display = 'flex';
+                    } else {
+                        // Change background color based on the revealed gender
+                        if (gender === 'boy') {
+                            document.getElementById('left').style.backgroundColor = '#87CEEB';
+                            document.getElementById('right').style.backgroundColor = '#87CEEB';
+                            showCelebration('boy');
+                        } else if (gender === 'girl') {
+                            document.getElementById('left').style.backgroundColor = '#FFC0CB';
+                            document.getElementById('right').style.backgroundColor = '#FFC0CB';
+                            showCelebration('girl');
+                        }
+
+                        // Hide the overlay
+                        document.getElementById('overlay').style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching gender information:', error);
+                    // Handle the error or provide a fallback behavior here
+                });
+        }
+
+        function showCelebration(gender) {
+            document.getElementById('celebration').innerText = `Congratulations! It's a ${gender.charAt(0).toUpperCase() + gender.slice(1)}!`;
+            document.getElementById('celebration').style.backgroundColor = gender === 'boy' ? '#87CEEB' : '#FFC0CB';
+            document.getElementById('celebration').style.display = 'block';
+        }
+
+        // Function to close the unknown popup
+        function closeUnknownPopup() {
+            document.getElementById('unknown-popup').style.display = 'none';
+        }
+    </script>
 </body>
+
 </html>
