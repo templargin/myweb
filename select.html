@@ -52,7 +52,7 @@
     // Fetch the current content of the gender.json file using GitHub API
     fetch('https://api.github.com/repos/templargin/myweb/contents/gender.json', {
       headers: {
-        Authorization: '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', // Replace with your actual token
+        Authorization: 'Bearer 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', // Replace with your actual token
       },
     })
       .then(response => response.json())
@@ -75,6 +75,12 @@
 
         // Set the selected option to the current gender value
         genderDropdown.value = currentGender;
+
+        // Store the response data, including the sha value
+        window.fileData = {
+          content: parsedData,
+          sha: data.sha,
+        };
       })
       .catch(error => {
         console.error('Error fetching gender information:', error);
@@ -90,14 +96,14 @@
       fetch('https://api.github.com/repos/templargin/myweb/contents/gender.json', {
         method: 'PUT',
         headers: {
-          Authorization: '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', // Replace with your actual token
+          Authorization: 'Bearer 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', // Replace with your actual token
           Accept: 'application/vnd.github.v3+json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           message: 'Update gender information',
           content: btoa(JSON.stringify(updatedData, null, 2)),
-          sha: data.sha, // Include the sha of the existing file
+          sha: window.fileData.sha, // Use the sha value from the stored response data
         }),
       })
         .then(response => response.json())
