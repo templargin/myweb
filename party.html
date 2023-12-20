@@ -90,31 +90,34 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            padding: 30px;
+            background-color: #FFD700; /* Gold */
+            border: 2px solid #4B0082; /* Indigo */
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
         #unknown-popup p {
-            margin: 0 0 15px;
+            margin: 0 0 20px;
+            font-size: 24px;
+            color: #4B0082; /* Indigo */
         }
 
         #unknown-popup button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #4B0082; /* Indigo */
+            color: #fff;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             outline: none;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         #unknown-popup button:hover {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -131,7 +134,7 @@
     <div id="celebration"></div>
 
     <div id="unknown-popup">
-        <p style="font-size: 20px;">The gender is still unknown.</p>
+        <p>The gender is still unknown.</p>
         <button onclick="closeUnknownPopup()">Close</button>
     </div>
 
