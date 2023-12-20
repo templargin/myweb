@@ -58,6 +58,7 @@
 
       // Prepare the updated data
       const updatedData = { gender: selectedGender };
+      console.log(updatedData);
 
       // Use the GitHub API to create or update the content of the gender.json file
       fetch('https://api.github.com/repos/templargin/myweb/contents/gender.json', {
