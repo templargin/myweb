@@ -53,15 +53,15 @@
   </form>
 
   <script>
-     function updateGender() {
+      function updateGender() {
         const selectedGender = document.getElementById('gender').value;
         const filePath = 'gender.json'; // Adjust the path as needed
       
         // Use the GitHub API to create the file
         fetch(`https://api.github.com/repos/templargin/myweb/contents/${filePath}`, {
-          method: 'PUT',
+          method: 'POST', // Change to POST
           headers: {
-            Authorization: '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', // Replace with your actual token
+            Authorization: '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', // Replace with your actual token
             Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
@@ -84,6 +84,7 @@
             console.error('Error creating file:', error);
           });
       }
+
 
 
   </script>
